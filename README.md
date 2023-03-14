@@ -44,3 +44,7 @@
    * СУБД: PostgreSQL
    * Безопасность: Spring Security
    * Тестирование: JUnit + Mockito
+
+### База Данных:
+Примерная схема базы данных выглядит следующим образом:
+![](src/main/resources/Store_DB_Scheme.png)
