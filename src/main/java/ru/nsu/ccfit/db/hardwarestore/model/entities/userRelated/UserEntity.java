@@ -1,11 +1,14 @@
-package ru.nsu.ccfit.db.hardwarestore.model.entities;
+package ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated;
 
 import jakarta.persistence.*;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.RoleEntity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 public class UserEntity {
 
     @Id
@@ -26,6 +29,17 @@ public class UserEntity {
 
     @Column
     private Date bornDate;
+
+    @ManyToMany
+    @JoinTable(
+            name = "User_Roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_name", referencedColumnName = "name")
+    )
+    private Set<RoleEntity> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "owner")
+    private Set<BankAccountEntity> bankAccounts = new HashSet<>();
 
     public Long getId() {
         return id;
