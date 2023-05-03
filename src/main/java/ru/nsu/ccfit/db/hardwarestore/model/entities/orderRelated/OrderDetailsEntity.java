@@ -22,7 +22,7 @@ public class OrderDetailsEntity {
     private Date createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "owner", referencedColumnName = "id")
     private UserEntity userId;
 
     @OneToMany(mappedBy = "orderDetails")

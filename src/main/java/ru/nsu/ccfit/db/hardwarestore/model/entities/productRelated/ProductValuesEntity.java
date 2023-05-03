@@ -16,11 +16,11 @@ public class ProductValuesEntity {
     private String value;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "product-fields", referencedColumnName = "id")
     private ProductFieldsEntity productFields;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "product", referencedColumnName = "id")
     private ProductEntity product;
 
     public Long getId() {

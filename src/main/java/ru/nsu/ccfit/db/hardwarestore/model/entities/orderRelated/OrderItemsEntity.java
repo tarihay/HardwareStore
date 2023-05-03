@@ -14,11 +14,11 @@ public class OrderItemsEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "product", referencedColumnName = "id")
     private ProductEntity product;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "order-details", referencedColumnName = "id")
     private OrderDetailsEntity orderDetails;
 
     public Long getId() {

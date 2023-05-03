@@ -12,18 +12,18 @@ public class PaymentDetailsEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "acc-from", referencedColumnName = "id")
     private BankAccountEntity from;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "acc-to", referencedColumnName = "id")
     private BankAccountEntity to;
 
     @OneToOne(mappedBy = "paymentDetails")
     private OrderDetailsEntity orderDetails;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "payment-status", referencedColumnName = "name")
     private PaymentStatusEntity paymentStatus;
 
     public Long getId() {

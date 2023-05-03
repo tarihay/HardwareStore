@@ -17,7 +17,7 @@ public class ProductFieldsEntity {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "product-type", referencedColumnName = "id")
     private ProductTypeEntity productType;
 
     @OneToMany(mappedBy = "productFields")
