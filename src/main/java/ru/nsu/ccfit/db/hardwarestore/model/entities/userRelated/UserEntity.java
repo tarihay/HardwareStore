@@ -1,12 +1,14 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.RoleEntity;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "Users")
 public class UserEntity {
@@ -41,51 +43,4 @@ public class UserEntity {
     @OneToMany(mappedBy = "owner")
     private Set<BankAccountEntity> bankAccounts = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Date getBornDate() {
-        return bornDate;
-    }
-
-    public void setBornDate(Date bornDate) {
-        this.bornDate = bornDate;
-    }
 }

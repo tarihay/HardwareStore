@@ -1,10 +1,12 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "Product_Types")
 public class ProductTypeEntity {
@@ -22,35 +24,4 @@ public class ProductTypeEntity {
     @OneToMany(mappedBy = "productType")
     private Set<ProductEntity> products = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<ProductFieldsEntity> getProductFields() {
-        return productFields;
-    }
-
-    public void setProductFields(Set<ProductFieldsEntity> productFields) {
-        this.productFields = productFields;
-    }
-
-    public Set<ProductEntity> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<ProductEntity> products) {
-        this.products = products;
-    }
 }

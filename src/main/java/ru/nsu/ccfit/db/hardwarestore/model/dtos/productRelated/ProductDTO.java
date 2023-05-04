@@ -18,7 +18,4 @@ public class ProductDTO {
     private Long amount;
 
     private Set<ProductValuesDTO> productValues = new HashSet<>();
-
-    private Set<OrderItemsDTO> orderItems = new HashSet<>();
-
 }

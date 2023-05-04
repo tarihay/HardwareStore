@@ -6,9 +6,11 @@ import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductValues
 
 @Component
 public class ProductValuesMapper {
-//    public ProductValuesDTO mapToDTO(ProductValuesEntity productValues) {
-//
-//    }
+    public ProductValuesDTO mapToDTO(ProductValuesEntity productValues) {
+        ProductValuesDTO productValuesDTO = new ProductValuesDTO();
+        productValuesDTO.setValue(productValues.getValue());
+        return productValuesDTO;
+    }
 //
 //    public ProductValuesEntity mapToEntity(ProductValuesDTO productValuesDTO) {
 //        ProductValuesEntity productValues = new ProductValuesEntity();

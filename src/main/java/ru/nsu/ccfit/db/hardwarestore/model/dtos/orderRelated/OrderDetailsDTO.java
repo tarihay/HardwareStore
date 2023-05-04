@@ -1,11 +1,13 @@
 package ru.nsu.ccfit.db.hardwarestore.model.dtos.orderRelated;
 
+import lombok.Data;
 import ru.nsu.ccfit.db.hardwarestore.model.dtos.userRelated.UserDTO;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 public class OrderDetailsDTO {
 
     private Long total;
@@ -18,43 +20,4 @@ public class OrderDetailsDTO {
 
     private PaymentDetailsDTO paymentDetails;
 
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public UserDTO getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UserDTO userId) {
-        this.userId = userId;
-    }
-
-    public Set<OrderItemsDTO> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(Set<OrderItemsDTO> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    public PaymentDetailsDTO getPaymentDetails() {
-        return paymentDetails;
-    }
-
-    public void setPaymentDetails(PaymentDetailsDTO paymentDetails) {
-        this.paymentDetails = paymentDetails;
-    }
 }
