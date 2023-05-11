@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.nsu.ccfit.db.hardwarestore.model.dtos.productRelated.ProductDTO;
 import ru.nsu.ccfit.db.hardwarestore.services.ProductService;
 
@@ -19,9 +21,12 @@ public class ProductsController {
 
     private ProductService productService;
 
-    @GetMapping
-    public String getAllProducts(Model model) {
-        Set<ProductDTO> products = productService.getAllProducts();
+    @GetMapping("/{productType}")
+    public String getProductsByType(
+            @PathVariable String productType,
+            Model model
+    ) {
+        Set<ProductDTO> products = productService.getProductsByType(productType);
         model.addAttribute("products", products);
         return "products";
     }

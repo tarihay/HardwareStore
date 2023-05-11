@@ -17,5 +17,7 @@ public class ProductDTO {
 
     private Long amount;
 
+    private String productType;
+
     private Set<ProductValuesDTO> productValues = new HashSet<>();
 }

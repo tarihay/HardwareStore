@@ -40,7 +40,7 @@ public class UserEntity {
     )
     private Set<RoleEntity> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "owner")
-    private Set<BankAccountEntity> bankAccounts = new HashSet<>();
+    @OneToOne(mappedBy = "owner")
+    private BankAccountEntity bankAccount;
 
 }

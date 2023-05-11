@@ -20,7 +20,7 @@ public class BankAccountEntity {
     @Column(name = "money_amount")
     private BigDecimal moneyAmount;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "owner", referencedColumnName = "id")
     private UserEntity owner;
 

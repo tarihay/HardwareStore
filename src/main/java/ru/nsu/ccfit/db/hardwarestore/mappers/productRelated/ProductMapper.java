@@ -23,6 +23,7 @@ public class ProductMapper {
         productDTO.setSerialNumber(product.getSerialNumber());
         productDTO.setAmount(product.getAmount());
         productDTO.setManufacturer(product.getManufacturer());
+        productDTO.setProductType(product.getProductType().getName());
 
         Set<ProductValuesDTO> productValuesDTOs =
                 product.getProductValues()
