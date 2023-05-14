@@ -24,6 +24,8 @@ public class ProductsController {
     @GetMapping("/{productType}")
     public String getProductsByType(
             @PathVariable String productType,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "1") int size,
             Model model
     ) {
         Set<ProductDTO> products = productService.getProductsByType(productType);

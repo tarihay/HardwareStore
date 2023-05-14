@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Pan-Propal</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/personal-area.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
@@ -29,53 +28,33 @@
     </nav>
 </header>
 
-<h5 class="name-text">
-    Имя:
-</h5>
-<div class="name-value">
-    <h5 th:text="${user.firstname}"></h5>
-</div>
+//TODO добавить css и проверить как работает
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Serial Number</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.serialNumber}"></td>
+        <td th:text="${product.manufacturer}"></td>
+        <td th:text="${product.price}"></td>
+    </tr>
+    </tbody>
+</table>
 
-<h5 class="lastname-text">
-    Фамилия:
-</h5>
-<div class="lastname-value">
-    <h5 th:text="${user.lastname}"></h5>
+<div>
+    <ul>
+        <li th:each="i : ${#numbers.sequence(1, totalPages)}">
+            <a th:href="@{/api/v1/products/{productType}(productType=${productType}, page=${i}, size=${size})}" th:text="${i}">Page</a>
+        </li>
+    </ul>
 </div>
-
-<h5 class="borndate-text">
-    Дата рождения:
-</h5>
-<div class="borndate-value">
-    <h5 th:text="${user.bornDate}"></h5>
-</div>
-
-<h5 class="login-text">
-    Логин:
-</h5>
-<div class="login-value">
-    <h5 th:text="${user.username}"></h5>
-</div>
-
-<h5 class="pass-text">
-    Пароль:
-</h5>
-<div class="pass-value">
-    <h5 th:text="${user.password}"></h5>
-</div>
-
-<a class="area-blue-button1" th:href="@{/api/v1/cash}">
-    <h5>Пополнить счёт</h5>
-</a>
-<a class="area-blue-button2" th:href="@{/api/v1/orders}">
-    <h5>Посмотреть Заказы</h5>
-</a>
-<a class="area-blue-button3" th:href="@{/api/v1/personal-area/edit}">
-    <h5>Редактировать профиль</h5>
-</a>
-<a class="area-exit-button" th:href="@{/api/v1/personal-area/exit}">
-    <h5>Выйти</h5>
-</a>
 
 </body>
 </html>

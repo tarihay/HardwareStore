@@ -6,6 +6,8 @@ import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductValues
 
 @Component
 public class ProductValuesMapper {
+    //TODO сделать логику маппинга DTO в сущность
+
     public ProductValuesDTO mapToDTO(ProductValuesEntity productValues) {
         ProductValuesDTO productValuesDTO = new ProductValuesDTO();
         productValuesDTO.setValue(productValues.getValue());

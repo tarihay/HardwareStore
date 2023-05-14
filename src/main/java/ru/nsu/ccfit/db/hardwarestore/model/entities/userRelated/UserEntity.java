@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.RoleEntity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +31,7 @@ public class UserEntity {
     private String lastname;
 
     @Column
-    private Date bornDate;
+    private LocalDate bornDate;
 
     @ManyToMany
     @JoinTable(
@@ -43,4 +44,15 @@ public class UserEntity {
     @OneToOne(mappedBy = "owner")
     private BankAccountEntity bankAccount;
 
+    public UserEntity(String username, String password, String firstname, String lastname, LocalDate bornDate) {
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.bornDate = bornDate;
+    }
+
+    public UserEntity() {
+
+    }
 }
