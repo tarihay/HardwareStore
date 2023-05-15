@@ -3,13 +3,10 @@ package ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Data
 @Entity
 @Table(name = "Product_Values")
-public class ProductValuesEntity {
+public class ProductValueEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -19,7 +16,7 @@ public class ProductValuesEntity {
 
     @ManyToOne
     @JoinColumn(name = "product-fields", referencedColumnName = "id")
-    private ProductFieldsEntity productFields;
+    private ProductFieldEntity productField;
 
     @ManyToOne
     @JoinColumn(name = "product", referencedColumnName = "id")

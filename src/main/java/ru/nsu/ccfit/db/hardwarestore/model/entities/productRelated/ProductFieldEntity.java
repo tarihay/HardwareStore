@@ -9,7 +9,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "Product_Fields")
-public class ProductFieldsEntity {
+public class ProductFieldEntity {
 
     @Id
     @GeneratedValue
@@ -19,10 +19,10 @@ public class ProductFieldsEntity {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "product-type", referencedColumnName = "id")
+    @JoinColumn(name = "product-type", referencedColumnName = "name")
     private ProductTypeEntity productType;
 
-    @OneToMany(mappedBy = "productFields")
-    private Set<ProductValuesEntity> productValues = new HashSet<>();
+    @OneToMany(mappedBy = "productField")
+    private Set<ProductValueEntity> productValues = new HashSet<>();
 
 }

@@ -12,14 +12,10 @@ import java.util.Set;
 public class ProductTypeEntity {
 
     @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column
     private String name;
 
     @OneToMany(mappedBy = "productType")
-    private Set<ProductFieldsEntity> productFields = new HashSet<>();
+    private Set<ProductFieldEntity> productFields = new HashSet<>();
 
     @OneToMany(mappedBy = "productType")
     private Set<ProductEntity> products = new HashSet<>();

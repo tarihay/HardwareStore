@@ -32,11 +32,11 @@ public class ProductEntity {
     private Long amount;
 
     @ManyToOne
-    @JoinColumn(name = "product-type", referencedColumnName = "id")
+    @JoinColumn(name = "product-type", referencedColumnName = "name")
     private ProductTypeEntity productType;
 
     @OneToMany(mappedBy = "product")
-    private Set<ProductValuesEntity> productValues = new HashSet<>();
+    private Set<ProductValueEntity> productValues = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
     private Set<OrderItemsEntity> orderItems = new HashSet<>();

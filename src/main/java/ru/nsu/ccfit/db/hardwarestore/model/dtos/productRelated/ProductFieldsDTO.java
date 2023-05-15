@@ -10,6 +10,6 @@ public class ProductFieldsDTO {
 
     private String name;
 
-    private Set<ProductValuesDTO> productValues = new HashSet<>();
+    private String value;
 
 }

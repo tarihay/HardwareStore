@@ -10,14 +10,9 @@ import java.util.Set;
 public class ProductDTO {
     private String name;
     private String serialNumber;
-
     private String manufacturer;
-
     private Long price;
-
     private Long amount;
-
     private String productType;
-
-    private Set<ProductValuesDTO> productValues = new HashSet<>();
+    private Set<ProductFieldsDTO> productFields = new HashSet<>();
 }
