@@ -1,0 +1,66 @@
+#register-firstname {
+    left: 22%;
+    top: 41%;
+}
+
+#register-lastname {
+    left: 52%;
+    top: 41%;
+}
+
+#register-email {
+    left: 22%;
+    top: 51%;
+}
+
+#register-username {
+    left: 52%;
+    top: 51%;
+}
+
+#register-password {
+    left: 22%;
+    top: 61%;
+}
+
+#register-repeat-pass {
+    left: 52%;
+    top: 61%;
+}
+
+#register-button {
+    left:38.5%;
+    top:73%;
+
+    width: 360px;
+    height: 90px;
+
+    border-width: 0;
+    color: #E222BC;
+    font-size: 36px;
+    text-decoration: underline;
+}
+
+#register-back {
+    left:1%;
+    top: 88%;
+
+    width: 180px;
+    height: 40px;
+}
+#register-error {
+    width: 550px;
+    height: 50px;
+    left: 32%;
+    top: 33%;
+
+    font-size: 25px;
+    color: red;
+}
+
+#register-main-text {
+    width: 100px;
+    height: 50px;
+    left: 35%;
+    top: 17%;
+}

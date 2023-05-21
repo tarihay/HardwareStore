@@ -28,32 +28,32 @@
     </nav>
 </header>
 
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Serial Number</th>
-        <th>Manufacturer</th>
-        <th>Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="product : ${products}">
-        <td th:text="${product.name}"></td>
-        <td th:text="${product.serialNumber}"></td>
-        <td th:text="${product.manufacturer}"></td>
-        <td th:text="${product.price}"></td>
-    </tr>
-    </tbody>
-</table>
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>Serial Number</th>-->
+<!--        <th>Manufacturer</th>-->
+<!--        <th>Price</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="product : ${products}">-->
+<!--        <td th:text="${product.name}"></td>-->
+<!--        <td th:text="${product.serialNumber}"></td>-->
+<!--        <td th:text="${product.manufacturer}"></td>-->
+<!--        <td th:text="${product.price}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 
-<div>
-    <ul>
-        <li th:each="i : ${#numbers.sequence(1, totalPages)}">
-            <a th:href="@{/api/v1/products/{productType}(productType=${productType}, page=${i}, size=${size})}" th:text="${i}">Page</a>
-        </li>
-    </ul>
-</div>
+<!--<div>-->
+<!--    <ul>-->
+<!--        <li th:each="i : ${#numbers.sequence(1, totalPages)}">-->
+<!--            <a th:href="@{/api/v1/products/{productType}(productType=${productType}, page=${i}, size=${size})}" th:text="${i}">Page</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
 
 </body>
 </html>

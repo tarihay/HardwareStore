@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.UserEntity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class OrderDetailsEntity {
     private Long total;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @ManyToOne
     @JoinColumn(name = "owner", referencedColumnName = "id")

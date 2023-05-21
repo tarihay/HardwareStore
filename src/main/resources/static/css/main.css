@@ -59,112 +59,88 @@ nav{
     border-radius: 15px;
 }
 
-.accessories{
+.form-group {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 16px 32px;
-    gap: 10px;
+    width: 400px;
+    height: 36px;
 
     position: absolute;
 
     background: #CFCDC4;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    border-radius: 20px;
+    border-width: 0;
 
-    left: 30%;
-    top: 150px;
-
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 38px;
+    color: rgba(0, 0, 0, 0.44);
 
     flex: none;
     order: 0;
     flex-grow: 0;
-
-    width: 500px;
-    height: 60px;
-
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 45px;
-    line-height: 68px;
-
-    color: #E222BC;
-    z-index: 0;
 }
 
-.components{
+.form-group {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 16px 32px;
-    gap: 10px;
+    width: 400px;
+    height: 36px;
 
     position: absolute;
 
     background: #CFCDC4;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    border-radius: 20px;
+    border-width: 0;
 
-    left: 30%;
-    top: 270px;
-
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 38px;
+    color: rgba(0, 0, 0, 0.44);
 
     flex: none;
     order: 0;
     flex-grow: 0;
-
-    width: 500px;
-    height: 60px;
-
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 45px;
-    line-height: 68px;
-
-    color: #E222BC;
-    z-index: 0;
 }
 
-.tvs{
+.filled-form-group {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 16px 32px;
-    gap: 10px;
+    width: 400px;
+    height: 36px;
 
     position: absolute;
 
     background: #CFCDC4;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    border-radius: 20px;
+    border-width: 0;
 
-    left: 30%;
-    top: 390px;
-
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 38px;
+    color: black;
 
     flex: none;
     order: 0;
     flex-grow: 0;
-
-    width: 500px;
-    height: 60px;
-
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 45px;
-    line-height: 68px;
-
-    color: #E222BC;
-    z-index: 0;
 }
 
-.pcs{
+.a-button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -173,33 +149,28 @@ nav{
     gap: 10px;
 
     position: absolute;
+    width: 240px;
+    height: 60px;
 
     background: #CFCDC4;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
 
-    left: 30%;
-    top: 510px;
 
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 38px;
+    color: #0064FF;
 
     flex: none;
     order: 0;
     flex-grow: 0;
-
-    width: 500px;
-    height: 60px;
-
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 45px;
-    line-height: 68px;
-
-    color: #E222BC;
-    z-index: 0;
 }
 
-.laptops{
+.a-red-button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -208,27 +179,39 @@ nav{
     gap: 10px;
 
     position: absolute;
+    width: 220px;
+    height: 50px;
 
-    background: #CFCDC4;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 0, 0, 0.35);
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-
-    left: 30%;
-    top: 630px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-
-    width: 500px;
-    height: 60px;
 
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 900;
-    font-size: 45px;
-    line-height: 68px;
+    font-size: 35px;
+    line-height: 23px;
+
+    color: #FF0000;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.h-text {
+    position: absolute;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 70px;
+    line-height: 70px;
+    text-align: center;
 
     color: #E222BC;
-    z-index: 0;
+}
+
+.text-danger {
+    color:red;
 }

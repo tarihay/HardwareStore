@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pan-Propal</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav>
+        <a class="logo" th:href="@{/api/v1}">
+            <img src="../static/images/logo.png" th:attr="src=@{/images/logo.png},alt=@{pan-logo},title=@{pan-logo}"
+                 width="390" height="100" alt="">
+        </a>
+
+        <a class="basket" th:href="@{/api/v1/basket}">
+            <img src="../static/images/basket.png" th:attr="src=@{/images/basket.png},alt=@{basket},title=@{basket}"
+                 width="70" height="70" alt="">
+        </a>
+
+        <a class="area" th:href="@{/api/v1/personal-area}">
+            <img src="../static/images/user.png" th:attr="src=@{/images/user.png},alt=@{user},title=@{user}" width="70"
+                 height="70" alt="">
+        </a>
+    </nav>
+</header>
+
+<h1 class="h-text" id="login-main-text">Вход</h1>
+
+<div>
+    <div>
+        <div th:if="${param.error}" class="h-text" id="login-error">
+            Неверный логин или пароль
+        </div>
+        <div th:if="${param.logout}" class="h-text" id="logout">
+            Вы вышли из аккаунта
+        </div>
+        <div class="login-form">
+            <form method="post" th:action="@{/api/v1/login}">
+                <input
+                        type="text"
+                        class="form-group"
+                        id="login-username"
+                        placeholder="username"
+                        name="username">
+                <input
+                        type="password"
+                        class="form-group"
+                        id="login-password"
+                        placeholder="password"
+                        name="password">
+                <a th:href="@{/api/v1/register}" class="a-button" id="register-button">
+                    <h5>Зарегистрироваться</h5>
+                </a>
+                <button class="a-button" id="login-button" type="submit" value="Войти">
+                    <h5>Войти</h5>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

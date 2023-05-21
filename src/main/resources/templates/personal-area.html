@@ -29,6 +29,8 @@
     </nav>
 </header>
 
+<h1 class="h-text" id="personal-main">Личный кабинет</h1>
+
 <h5 class="name-text">
     Имя:
 </h5>
@@ -43,11 +45,11 @@
     <h5 th:text="${user.lastname}"></h5>
 </div>
 
-<h5 class="borndate-text">
-    Дата рождения:
+<h5 class="email-text">
+    Email:
 </h5>
-<div class="borndate-value">
-    <h5 th:text="${user.bornDate}"></h5>
+<div class="email-value">
+    <h5 th:text="${user.email}"></h5>
 </div>
 
 <h5 class="login-text">
@@ -57,23 +59,16 @@
     <h5 th:text="${user.username}"></h5>
 </div>
 
-<h5 class="pass-text">
-    Пароль:
-</h5>
-<div class="pass-value">
-    <h5 th:text="${user.password}"></h5>
-</div>
-
-<a class="area-blue-button1" th:href="@{/api/v1/cash}">
+<a class="a-button" id="area-blue-button1" th:href="@{/api/v1/cash}">
     <h5>Пополнить счёт</h5>
 </a>
-<a class="area-blue-button2" th:href="@{/api/v1/orders}">
+<a class="a-button" id="area-blue-button2" th:href="@{/api/v1/orders}">
     <h5>Посмотреть Заказы</h5>
 </a>
-<a class="area-blue-button3" th:href="@{/api/v1/personal-area/edit}">
+<a class="a-button" id="area-blue-button3" th:href="@{/api/v1/personal-area/edit}">
     <h5>Редактировать профиль</h5>
 </a>
-<a class="area-exit-button" th:href="@{/api/v1/personal-area/exit}">
+<a class="a-red-button" id="area-exit-button" th:href="@{/api/v1/personal-area/exit}">
     <h5>Выйти</h5>
 </a>
 

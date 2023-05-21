@@ -3,6 +3,7 @@ package ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated;
 import jakarta.persistence.*;
 import lombok.Data;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated.OrderItemsEntity;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.BasketEntity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,5 +41,9 @@ public class ProductEntity {
 
     @OneToMany(mappedBy = "product")
     private Set<OrderItemsEntity> orderItems = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "basket_id", referencedColumnName = "id")
+    private BasketEntity basket;
 
 }

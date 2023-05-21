@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.nsu.ccfit.db.hardwarestore.exceptions.ProductRelatedException;
 import ru.nsu.ccfit.db.hardwarestore.model.dtos.productRelated.ProductDTO;
 import ru.nsu.ccfit.db.hardwarestore.model.dtos.productRelated.ProductValueDTO;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.UserEntity;
 import ru.nsu.ccfit.db.hardwarestore.services.ProductService;
+import ru.nsu.ccfit.db.hardwarestore.utils.SecurityUtils;
 
 import java.util.Set;
 
@@ -21,6 +23,7 @@ public class ProductsController {
 
     private ProductService productService;
 
+
     @GetMapping("/{productType}")
     public String getProductsByType(
             @PathVariable String productType,
@@ -28,6 +31,8 @@ public class ProductsController {
             @RequestParam(defaultValue = "1") int size,
             Model model
     ) {
+        UserEntity user = new UserEntity();
+        String username = SecurityUtils.getSessionUser();
         Set<ProductDTO> products = productService.getProductsByType(productType);
         model.addAttribute("products", products);
         return "products";
@@ -47,4 +52,6 @@ public class ProductsController {
         productService.saveProductType(type);
         return ResponseEntity.ok().body("Success");
     }
+
+
 }
