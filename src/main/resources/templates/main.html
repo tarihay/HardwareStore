@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="english">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pan-Propal</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main-page.css}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="logo" th:href="@{/api/v1}">
+                    <img src="../static/images/logo.png" th:attr="src=@{/images/logo.png},alt=@{pan-logo},title=@{pan-logo}" width="390" height="100" alt="">
+                </a>
+
+                <a class="basket" th:href="@{/api/v1/basket}">
+                    <img src="../static/images/basket.png" th:attr="src=@{/images/basket.png},alt=@{basket},title=@{basket}" width="70" height="70" alt="">
+                </a>
+
+                <a class="area" th:href="@{/api/v1/personal-area}">
+                    <img src="../static/images/user.png" th:attr="src=@{/images/user.png},alt=@{user},title=@{user}" width="70" height="70" alt="">
+                </a>
+            </nav>
+        </header>
+
+        <a class="a-button" id="accessories" th:href="@{/api/v1/products/accessory}">
+            <img src="../static/images/flash.png" th:attr="src=@{/images/flash.png}" width="60" height="60">
+            <h5>Аксессуары</h5>
+        </a>
+
+        <a class="a-button" id="components" th:href="@{/api/v1/products/component}">
+            <img src="../static/images/hdd.png" th:attr="src=@{/images/hdd.png}" width="60" height="60">
+            <h5>Комплектующие</h5>
+        </a>
+
+        <a class="a-button" id="tvs" th:href="@{/api/v1/products/tv}">
+            <img src="../static/images/tv.png" th:attr="src=@{/images/tv.png}" width="60" height="60">
+            <h5>Телевизоры</h5>
+        </a>
+
+        <a class="a-button" id="pcs" th:href="@{/api/v1/products/pc}">
+            <img src="../static/images/pc.png" th:attr="src=@{/images/pc.png}" width="60" height="60">
+            <h5>Сборки ПК</h5>
+        </a>
+
+        <a class="a-button" id="laptops" th:href="@{/api/v1/products/laptop}">
+            <img src="../static/images/laptop.png" th:attr="src=@{/images/laptop.png}" width="60" height="60">
+            <h5>Ноутбуки</h5>
+        </a>
+    </body>
+</html>

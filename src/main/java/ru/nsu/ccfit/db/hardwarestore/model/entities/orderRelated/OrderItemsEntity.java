@@ -1,11 +1,14 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated;
 
+import jakarta.annotation.sql.DataSourceDefinitions;
 import jakarta.persistence.*;
+import lombok.Data;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "Order_Items")
 public class OrderItemsEntity {
@@ -14,34 +17,11 @@ public class OrderItemsEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "product", referencedColumnName = "id")
     private ProductEntity product;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "order-details", referencedColumnName = "id")
     private OrderDetailsEntity orderDetails;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public ProductEntity getProduct() {
-        return product;
-    }
-
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
-
-    public OrderDetailsEntity getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(OrderDetailsEntity orderDetails) {
-        this.orderDetails = orderDetails;
-    }
 }

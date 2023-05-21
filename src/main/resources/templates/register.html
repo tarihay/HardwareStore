@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pan-Propal</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a class="logo" th:href="@{/api/v1}">
+            <img src="../static/images/logo.png" th:attr="src=@{/images/logo.png},alt=@{pan-logo},title=@{pan-logo}"
+                 width="390" height="100" alt="">
+        </a>
+
+        <a class="basket" th:href="@{/api/v1/basket}">
+            <img src="../static/images/basket.png" th:attr="src=@{/images/basket.png},alt=@{basket},title=@{basket}"
+                 width="70" height="70" alt="">
+        </a>
+
+        <a class="area" th:href="@{/api/v1/personal-area}">
+            <img src="../static/images/user.png" th:attr="src=@{/images/user.png},alt=@{user},title=@{user}" width="70"
+                 height="70" alt="">
+        </a>
+    </nav>
+</header>
+
+<h1 class="h-text" id="register-main-text">Регистрация</h1>
+
+<div>
+    <div>
+        <div th:if="${param.fail}" class="h-text" id="register-error">
+            Ошибка в введенных данных
+        </div>
+        <div class="registration-form">
+            <form method="post" th:action="@{/api/v1/register/save}" th:object="${user}">
+                <input
+                        type="text"
+                        class="form-group"
+                        id="register-firstname"
+                        placeholder="firstname"
+                        th:field="*{firstname}">
+                <p th:if="${#fields.hasErrors('firstname')}" class="text-danger"></p>
+                <input
+                        type="text"
+                        class="form-group"
+                        id="register-lastname"
+                        placeholder="lastname"
+                        th:field="*{lastname}">
+                <p th:if="${#fields.hasErrors('lastname')}" class="text-danger"></p>
+                <input
+                        type="text"
+                        class="form-group"
+                        id="register-email"
+                        placeholder="email"
+                        th:field="*{email}">
+                <p th:if="${#fields.hasErrors('email')}" class="text-danger"></p>
+                <input
+                        type="text"
+                        class="form-group"
+                        id="register-username"
+                        placeholder="username"
+                        th:field="*{username}">
+                <p th:if="${#fields.hasErrors('username')}" class="text-danger"></p>
+                <input
+                        type="password"
+                        class="form-group"
+                        id="register-password"
+                        placeholder="password"
+                        th:field="*{password}">
+                <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+                <input
+                        type="password"
+                        class="form-group"
+                        id="register-repeat-pass"
+                        placeholder="repeat pass"
+                        th:field="*{passwordCheck}">
+                <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+                <button class="a-button" id="register-button" type="submit" value="Зарегистрироваться">
+                    <h5>Зарегистрироваться</h5>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<a class="a-red-button" id="register-back" th:href="@{/api/v1/login}">
+    <h5>Назад</h5>
+</a>
+
+</body>
+</html>

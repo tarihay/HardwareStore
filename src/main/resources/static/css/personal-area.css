@@ -1,0 +1,255 @@
+#area-blue-button1 {
+    left: 15%;
+    top: 70%;
+}
+
+#area-blue-button2 {
+    left: 40%;
+    top: 70%;
+}
+
+#area-blue-button3 {
+    left: 65%;
+    top: 70%;
+}
+
+#area-exit-button {
+    left: 80%;
+    top: 87%;
+}
+
+.name-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    position: absolute;
+    left: 30%;
+    top: 25%;
+
+    width: 59px;
+    height: 28px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #E222BC;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.lastname-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    position: absolute;
+    left: 30%;
+    top: 35%;
+
+    width: 59px;
+    height: 28px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #E222BC;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.email-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    height: 28px;
+    padding: 0px;
+    gap: 10px;
+
+    position: absolute;
+    left: 30%;
+    top: 45%;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #E222BC;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.login-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    position: absolute;
+    left: 30%;
+    top: 55%;
+
+    width: 59px;
+    height: 28px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #E222BC;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.name-value {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    width: 350px;
+    height: 36px;
+    left: 50%;
+    top: 30%;
+
+    background: #CFCDC4;
+    border-radius: 20px;
+
+
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 38px;
+    color: black;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.lastname-value {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    width: 350px;
+    height: 36px;
+    left: 50%;
+    top: 40%;
+
+    background: #CFCDC4;
+    border-radius: 20px;
+
+
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 38px;
+    color: black;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.email-value {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    width: 350px;
+    height: 36px;
+    left: 50%;
+    top: 50%;
+
+    background: #CFCDC4;
+    border-radius: 20px;
+
+
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 38px;
+    color: black;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.login-value {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    width: 350px;
+    height: 36px;
+    left: 50%;
+    top: 60%;
+
+    background: #CFCDC4;
+    border-radius: 20px;
+
+
+    font-family: 'Raleway';
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 38px;
+    color: black;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#personal-main {
+    left: 40%;
+    top:15%;
+
+    font-size: 36px;
+
+    color: #0064FF;
+}

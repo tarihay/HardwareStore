@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="english">
+<head>
+    <meta charset="UTF-8">
+    <title>Pan-Propal</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/personal-area-edit.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav>
+        <a class="logo" th:href="@{/api/v1}">
+            <img src="../static/images/logo.png" th:attr="src=@{/images/logo.png},alt=@{pan-logo},title=@{pan-logo}" width="390" height="100" alt="">
+        </a>
+
+        <a class="basket" th:href="@{/api/v1/basket}">
+            <img src="../static/images/basket.png" th:attr="src=@{/images/basket.png},alt=@{basket},title=@{basket}" width="70" height="70" alt="">
+        </a>
+
+        <a class="area" th:href="@{/api/v1/personal-area}">
+            <img src="../static/images/user.png" th:attr="src=@{/images/user.png},alt=@{user},title=@{user}" width="70" height="70" alt="">
+        </a>
+    </nav>
+</header>
+
+
+<h1 class="h-text" id="edit-main-text">Изменение данных пользователя</h1>
+
+
+<h5 class="name-text">
+    Изменение имени:
+</h5>
+
+<h5 class="lastname-text">
+    Изменение фамилии:
+</h5>
+
+<h5 class="email-text">
+    Изменение email:
+</h5>
+
+<h5 class="pass-text">
+    Изменение пароля:
+</h5>
+
+<div>
+    <div>
+        <div th:if="${param.fail}" class="h-text" id="edit-error">
+            Ошибка в введенных данных
+        </div>
+        <div class="edit-form">
+            <form method="post" th:action="@{/api/v1/personal-area/edit/save}" th:object="${user}">
+                <input
+                        type="text"
+                        class="invisible"
+                        id="edit-username"
+                        placeholder="username"
+                        th:field="*{username}">
+
+                <input
+                        type="text"
+                        class="filled-form-group"
+                        id="edit-firstname"
+                        placeholder="firstname"
+                        th:field="*{firstname}">
+                <p th:if="${#fields.hasErrors('firstname')}" class="text-danger"></p>
+                <input
+                        type="text"
+                        class="filled-form-group"
+                        id="edit-lastname"
+                        placeholder="lastname"
+                        th:field="*{lastname}">
+                <p th:if="${#fields.hasErrors('lastname')}" class="text-danger"></p>
+                <input
+                        type="text"
+                        class="filled-form-group"
+                        id="edit-email"
+                        placeholder="email"
+                        th:field="*{email}">
+                <p th:if="${#fields.hasErrors('email')}" class="text-danger"></p>
+                <input
+                        type="password"
+                        class="form-group"
+                        id="edit-password"
+                        placeholder="password"
+                        th:field="*{password}">
+                <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+                <input
+                        type="password"
+                        class="form-group"
+                        id="edit-repeat-pass"
+                        placeholder="repeat pass"
+                        th:field="*{passwordCheck}">
+                <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+                <button class="a-button" id="edit-button" type="submit" value="Сохранить">
+                    <h5>Сохранить изменения</h5>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<a class="a-red-button" id="edit-back" th:href="@{/api/v1/personal-area}">
+    <h5>Назад</h5>
+</a>
+</body>
+</html>

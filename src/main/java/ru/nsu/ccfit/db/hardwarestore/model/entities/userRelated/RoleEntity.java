@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,9 +15,7 @@ public class RoleEntity {
     @Id
     private String name;
 
-    @ManyToMany(
-        mappedBy = "roles"
-    )
+    @ManyToMany(mappedBy = "roles")
     private Set<UserEntity> users = new HashSet<>();
 
     public String getName() {

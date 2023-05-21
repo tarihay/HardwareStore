@@ -1,12 +1,15 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.UserEntity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "Order_Details")
 public class OrderDetailsEntity {
@@ -19,10 +22,10 @@ public class OrderDetailsEntity {
     private Long total;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "owner", referencedColumnName = "id")
     private UserEntity userId;
 
     @OneToMany(mappedBy = "orderDetails")
@@ -32,51 +35,4 @@ public class OrderDetailsEntity {
     @JoinColumn(name = "payment_details_id", referencedColumnName = "id")
     private PaymentDetailsEntity paymentDetails;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public UserEntity getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UserEntity userId) {
-        this.userId = userId;
-    }
-
-    public Set<OrderItemsEntity> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(Set<OrderItemsEntity> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    public PaymentDetailsEntity getPaymentDetails() {
-        return paymentDetails;
-    }
-
-    public void setPaymentDetails(PaymentDetailsEntity paymentDetails) {
-        this.paymentDetails = paymentDetails;
-    }
 }

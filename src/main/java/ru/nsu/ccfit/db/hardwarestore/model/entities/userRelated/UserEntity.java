@@ -1,8 +1,13 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.RoleEntity;
 
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,11 +20,14 @@ public class UserEntity {
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String username;
 
     @Column
     private String password;
+
+    @Column
+    private String email;
 
     @Column
     private String firstname;
@@ -27,10 +35,7 @@ public class UserEntity {
     @Column
     private String lastname;
 
-    @Column
-    private Date bornDate;
-
-    @ManyToMany
+    @ManyToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "User_Roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -38,8 +43,12 @@ public class UserEntity {
     )
     private Set<RoleEntity> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "owner")
-    private Set<BankAccountEntity> bankAccounts = new HashSet<>();
+    @OneToOne(mappedBy = "owner")
+    private BankAccountEntity bankAccount;
+
+    @OneToOne
+    @JoinColumn(name = "basket_id", referencedColumnName = "id")
+    private BasketEntity basket;
 
     public Long getId() {
         return id;
@@ -65,6 +74,14 @@ public class UserEntity {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -81,11 +98,27 @@ public class UserEntity {
         this.lastname = lastname;
     }
 
-    public Date getBornDate() {
-        return bornDate;
+    public Set<RoleEntity> getRoles() {
+        return roles;
     }
 
-    public void setBornDate(Date bornDate) {
-        this.bornDate = bornDate;
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
+    }
+
+    public BankAccountEntity getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccountEntity bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public BasketEntity getBasket() {
+        return basket;
+    }
+
+    public void setBasket(BasketEntity basket) {
+        this.basket = basket;
     }
 }

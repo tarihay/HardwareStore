@@ -1,0 +1,44 @@
+#accessories{
+    left: 30%;
+    top: 150px;
+    width: 500px;
+    height: 60px;
+
+    color: #E222BC;
+}
+
+#components{
+    left: 30%;
+    top: 270px;
+
+    width: 500px;
+    height: 60px;
+    color: #E222BC;
+}
+
+#tvs{
+    left: 30%;
+    top: 390px;
+    width: 500px;
+    height: 60px;
+
+    color: #E222BC;
+}
+
+#pcs{
+    left: 30%;
+    top: 510px;
+    width: 500px;
+    height: 60px;
+
+    color: #E222BC;
+}
+
+#laptops{
+    left: 30%;
+    top: 630px;
+    width: 500px;
+    height: 60px;
+
+    color: #E222BC;
+}
