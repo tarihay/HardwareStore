@@ -1,6 +1,8 @@
 package ru.nsu.ccfit.db.hardwarestore.services;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.nsu.ccfit.db.hardwarestore.mappers.productRelated.ProductMapper;
 import ru.nsu.ccfit.db.hardwarestore.model.dtos.productRelated.ProductDTO;
@@ -10,6 +12,7 @@ import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductFieldEntity;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductTypeEntity;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductValueEntity;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartEntity;
 import ru.nsu.ccfit.db.hardwarestore.repositories.ProductFieldsRepository;
 import ru.nsu.ccfit.db.hardwarestore.repositories.ProductRepository;
 import ru.nsu.ccfit.db.hardwarestore.repositories.ProductTypeRepository;
@@ -29,7 +32,7 @@ public class ProductService {
     private ProductFieldsRepository productFieldsRepository;
     private ProductValueRepository productValueRepository;
 
-    public Set<ProductDTO> getProductsByType(String productTypeName) {
+    public Page<ProductDTO> getProductsByType(String productTypeName, Pageable pageable) {
         Optional<ProductTypeEntity> productTypeOptional = productTypeRepository.findByName(productTypeName);
         ProductTypeEntity productTypeEntity = null;
         if (productTypeOptional.isPresent()) {
@@ -39,10 +42,8 @@ public class ProductService {
             return null;
         }
 
-        return productRepository.findAllByProductType(productTypeEntity)
-                .stream()
-                .map((product) -> productMapper.mapToDTO(product))
-                .collect(Collectors.toSet());
+        return productRepository.findAllByProductType(productTypeEntity, pageable)
+                .map((product) -> productMapper.mapToDTO(product));
     }
 
     public ProductDTO getProductById(Long id) {
@@ -80,6 +81,8 @@ public class ProductService {
             }
         }
 
+        //TODO проверить кастомные поля в продукте
+
         return savedProduct.getId();
     }
 
@@ -92,5 +95,10 @@ public class ProductService {
         ProductTypeEntity type = new ProductTypeEntity();
         type.setName(typeDTO.getName());
         productTypeRepository.save(type);
+    }
+
+    public Page<ProductDTO> getProductsByCart(CartEntity cart, Pageable pageable) {
+        Page<ProductEntity> productPage = productRepository.findByCartId(cart.getId(), pageable);
+        return productPage.map(product -> productMapper.mapToDTO(product));
     }
 }

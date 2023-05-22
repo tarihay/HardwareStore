@@ -66,6 +66,6 @@ public class AuthController {
             return "register";
         }
         userService.saveUser(userDTO);
-        return "redirect:/api/v1";
+        return "redirect:/api/v1/login";
     }
 }

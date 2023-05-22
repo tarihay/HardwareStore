@@ -8,6 +8,6 @@ import java.util.Set;
 
 @Data
 @AllArgsConstructor
-public class BasketDTO {
+public class CartDTO {
     private Set<ProductDTO> products;
 }

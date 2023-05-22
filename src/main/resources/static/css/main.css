@@ -215,3 +215,25 @@ nav{
 .text-danger {
     color:red;
 }
+
+.th-text-pink {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 70px;
+    text-align: center;
+
+    color: #E222BC;
+}
+
+.th-text-blue {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 70px;
+    text-align: center;
+
+    color: #0064FF;
+}

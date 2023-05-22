@@ -1,9 +1,11 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated.OrderItemsEntity;
-import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.BasketEntity;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartEntity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +13,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "Product")
+@EqualsAndHashCode(exclude = "carts")
 public class ProductEntity {
 
     @Id
@@ -42,8 +45,12 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product")
     private Set<OrderItemsEntity> orderItems = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "basket_id", referencedColumnName = "id")
-    private BasketEntity basket;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Cart_Product",
+            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    )
+    private Set<CartEntity> carts;
 
 }

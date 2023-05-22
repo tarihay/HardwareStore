@@ -1,14 +1,6 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.RoleEntity;
-
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,8 +39,8 @@ public class UserEntity {
     private BankAccountEntity bankAccount;
 
     @OneToOne
-    @JoinColumn(name = "basket_id", referencedColumnName = "id")
-    private BasketEntity basket;
+    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    private CartEntity cart;
 
     public Long getId() {
         return id;
@@ -114,11 +106,11 @@ public class UserEntity {
         this.bankAccount = bankAccount;
     }
 
-    public BasketEntity getBasket() {
-        return basket;
+    public CartEntity getCart() {
+        return cart;
     }
 
-    public void setBasket(BasketEntity basket) {
-        this.basket = basket;
+    public void setCart(CartEntity cart) {
+        this.cart = cart;
     }
 }
