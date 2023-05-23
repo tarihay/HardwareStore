@@ -32,6 +32,7 @@
 <table class="products">
     <thead>
         <tr>
+            <th class="th-text-pink" scope="col">ID</th>
             <th class="th-text-pink" scope="col">Название</th>
             <th class="th-text-pink" scope="col">Сер. Номер</th>
             <th class="th-text-pink" scope="col">Проивзодитель</th>
@@ -41,6 +42,7 @@
     </thead>
     <tbody>
         <tr th:each="product : ${products}">
+            <td class="th-text-blue" th:text="${product.id}"></td>
             <td class="th-text-blue" th:text="${product.name}"></td>
             <td class="th-text-blue" th:text="${product.serialNumber}"></td>
             <td class="th-text-blue" th:text="${product.manufacturer}"></td>

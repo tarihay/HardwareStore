@@ -12,16 +12,16 @@ public class UserEntity {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column (unique = true, nullable = false)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String firstname;
 
     @Column

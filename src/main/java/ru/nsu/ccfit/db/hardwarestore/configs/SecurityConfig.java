@@ -37,7 +37,8 @@ public class SecurityConfig {
                 .requestMatchers(
                         "/api/v1/personal-area/**",
                         "/api/v1/products/add-to-cart/**",
-                        "/api/v1/cart"
+                        "/api/v1/cart/**",
+                        "/api/v1/cash/**"
                 ).authenticated()
                 .requestMatchers("/api/v1/products/add-product")
                 .hasRole("ADMIN")

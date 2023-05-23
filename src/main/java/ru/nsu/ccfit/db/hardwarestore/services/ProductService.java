@@ -96,9 +96,4 @@ public class ProductService {
         type.setName(typeDTO.getName());
         productTypeRepository.save(type);
     }
-
-    public Page<ProductDTO> getProductsByCart(CartEntity cart, Pageable pageable) {
-        Page<ProductEntity> productPage = productRepository.findByCartId(cart.getId(), pageable);
-        return productPage.map(product -> productMapper.mapToDTO(product));
-    }
 }

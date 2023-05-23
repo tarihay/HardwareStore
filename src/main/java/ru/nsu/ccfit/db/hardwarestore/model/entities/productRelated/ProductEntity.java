@@ -1,11 +1,12 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated.OrderItemsEntity;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartEntity;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartItemEntity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -45,12 +46,30 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product")
     private Set<OrderItemsEntity> orderItems = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Cart_Product",
-            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "cart_id", referencedColumnName = "id")
-    )
-    private Set<CartEntity> carts;
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private Set<CartItemEntity> cartItems;
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ProductEntity other = (ProductEntity) obj;
+        if (!id.equals(other.id))
+            return false;
+        return true;
+    }
 
 }

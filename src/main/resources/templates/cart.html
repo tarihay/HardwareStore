@@ -32,6 +32,7 @@
 <table class="products">
     <thead>
     <tr>
+        <th class="th-text-pink" scope="col">ID</th>
         <th class="th-text-pink" scope="col">Название</th>
         <th class="th-text-pink" scope="col">Сер. Номер</th>
         <th class="th-text-pink" scope="col">Проивзодитель</th>
@@ -42,13 +43,14 @@
     </thead>
     <tbody>
     <tr th:each="product : ${products}">
+        <td class="th-text-blue" th:text="${product.id}"></td>
         <td class="th-text-blue" th:text="${product.name}"></td>
         <td class="th-text-blue" th:text="${product.serialNumber}"></td>
         <td class="th-text-blue" th:text="${product.manufacturer}"></td>
         <td class="th-text-blue" th:text="${product.price}"></td>
         <td class="th-text-blue" th:text="${product.productType}"></td>
         <td>
-            <form th:action="@{/api/v1/products/add-to-cart/{id}(id=${product.id})}" method="post">
+            <form th:action="@{/api/v1/cart/remove/{id}(id=${product.id})}" method="post">
                 <button class="add-to-cart-button" type="submit">
                     <img src="../static/images/minus.png" th:attr="src=@{/images/minus.png},alt=@{minus},title=@{minus}"
                          width="50" height="50" alt="">

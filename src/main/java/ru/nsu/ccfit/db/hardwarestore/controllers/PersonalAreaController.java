@@ -31,7 +31,7 @@ public class PersonalAreaController {
             return "redirect:/api/v1/login";
         }
         log.info(email);
-        UserEntity user = userService.getUserByEmail(email);
+        UserDTO user = userService.getUserDTOByEmail(email);
         model.addAttribute("user", user);
         return "personal-area";
     }
@@ -82,4 +82,6 @@ public class PersonalAreaController {
         userService.updateUser(user);
         return "redirect:/api/v1/personal-area";
     }
+
+
 }

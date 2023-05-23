@@ -1,16 +1,16 @@
 #area-blue-button1 {
     left: 15%;
-    top: 70%;
+    top: 72%;
 }
 
 #area-blue-button2 {
     left: 40%;
-    top: 70%;
+    top: 72%;
 }
 
 #area-blue-button3 {
     left: 65%;
-    top: 70%;
+    top: 72%;
 }
 
 #area-exit-button {
@@ -54,7 +54,7 @@
 
     position: absolute;
     left: 30%;
-    top: 35%;
+    top: 33%;
 
     width: 59px;
     height: 28px;
@@ -83,7 +83,7 @@
 
     position: absolute;
     left: 30%;
-    top: 45%;
+    top: 41%;
 
     font-family: 'Raleway';
     font-style: normal;
@@ -107,7 +107,34 @@
 
     position: absolute;
     left: 30%;
-    top: 55%;
+    top: 49%;
+
+    width: 59px;
+    height: 28px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #E222BC;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.moneyAmount-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    position: absolute;
+    left: 30%;
+    top: 57%;
 
     width: 59px;
     height: 28px;
@@ -133,9 +160,9 @@
     gap: 10px;
 
     position: absolute;
-    width: 350px;
+    width: 400px;
     height: 36px;
-    left: 50%;
+    left: 45%;
     top: 30%;
 
     background: #CFCDC4;
@@ -163,10 +190,10 @@
     gap: 10px;
 
     position: absolute;
-    width: 350px;
+    width: 400px;
     height: 36px;
-    left: 50%;
-    top: 40%;
+    left: 45%;
+    top: 38%;
 
     background: #CFCDC4;
     border-radius: 20px;
@@ -193,10 +220,10 @@
     gap: 10px;
 
     position: absolute;
-    width: 350px;
+    width: 400px;
     height: 36px;
-    left: 50%;
-    top: 50%;
+    left: 45%;
+    top: 46%;
 
     background: #CFCDC4;
     border-radius: 20px;
@@ -223,10 +250,10 @@
     gap: 10px;
 
     position: absolute;
-    width: 350px;
+    width: 400px;
     height: 36px;
-    left: 50%;
-    top: 60%;
+    left: 45%;
+    top: 54%;
 
     background: #CFCDC4;
     border-radius: 20px;
@@ -243,6 +270,26 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+.moneyAmount-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 45%;
+    top: 62%;
+    width: 400px;
+    height: 36px;
+    background-color: #CFCDC4;
+    color: #1C1C1C;
+    font-family: 'Raleway';
+    font-size: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
 }
 
 #personal-main {

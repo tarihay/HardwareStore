@@ -59,6 +59,13 @@
     <h5 th:text="${user.username}"></h5>
 </div>
 
+<h5 class="moneyAmount-text">
+    $:
+</h5>
+<div class="moneyAmount-value">
+    <h5 th:text="${user.moneyAmount}"></h5>
+</div>
+
 <a class="a-button" id="area-blue-button1" th:href="@{/api/v1/cash}">
     <h5>Пополнить счёт</h5>
 </a>
