@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Data
 public class ProductDTO {
+    private Long id;
     private String name;
     private String serialNumber;
     private String manufacturer;

@@ -2,6 +2,7 @@ package ru.nsu.ccfit.db.hardwarestore.model.dtos.userRelated;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,9 +14,8 @@ public class UserDTO {
     private String firstname;
     private String lastname;
     private String email;
+    private Double moneyAmount;
 
     private Set<String> roles = new HashSet<>();
-
-    private Set<BankAccountDTO> bankAccounts = new HashSet<>();
 
 }

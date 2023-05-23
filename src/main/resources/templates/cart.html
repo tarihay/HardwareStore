@@ -31,38 +31,40 @@
 
 <table class="products">
     <thead>
-        <tr>
-            <th class="th-text-pink" scope="col">ID</th>
-            <th class="th-text-pink" scope="col">Название</th>
-            <th class="th-text-pink" scope="col">Сер. Номер</th>
-            <th class="th-text-pink" scope="col">Проивзодитель</th>
-            <th class="th-text-pink" scope="col">Цена</th>
-            <th class="th-text-pink" scope="col">Добавить</th>
-        </tr>
+    <tr>
+        <th class="th-text-pink" scope="col">ID</th>
+        <th class="th-text-pink" scope="col">Название</th>
+        <th class="th-text-pink" scope="col">Сер. Номер</th>
+        <th class="th-text-pink" scope="col">Проивзодитель</th>
+        <th class="th-text-pink" scope="col">Цена</th>
+        <th class="th-text-pink" scope="col">Тип товара</th>
+        <th class="th-text-pink" scope="col">Убрать</th>
+    </tr>
     </thead>
     <tbody>
-        <tr th:each="product : ${products}">
-            <td class="th-text-blue" th:text="${product.id}"></td>
-            <td class="th-text-blue" th:text="${product.name}"></td>
-            <td class="th-text-blue" th:text="${product.serialNumber}"></td>
-            <td class="th-text-blue" th:text="${product.manufacturer}"></td>
-            <td class="th-text-blue" th:text="${product.price}"></td>
-            <td>
-                <form th:action="@{/api/v1/products/add-to-cart/{id}(id=${product.id})}" method="post">
-                    <button class="add-to-cart-button" type="submit">
-                        <img src="../static/images/plus.png" th:attr="src=@{/images/plus.png},alt=@{plus},title=@{plus}"
-                             width="50" height="50" alt="">
-                    </button>
-                </form>
-            </td>
-        </tr>
+    <tr th:each="product : ${products}">
+        <td class="th-text-blue" th:text="${product.id}"></td>
+        <td class="th-text-blue" th:text="${product.name}"></td>
+        <td class="th-text-blue" th:text="${product.serialNumber}"></td>
+        <td class="th-text-blue" th:text="${product.manufacturer}"></td>
+        <td class="th-text-blue" th:text="${product.price}"></td>
+        <td class="th-text-blue" th:text="${product.productType}"></td>
+        <td>
+            <form th:action="@{/api/v1/cart/remove/{id}(id=${product.id})}" method="post">
+                <button class="add-to-cart-button" type="submit">
+                    <img src="../static/images/minus.png" th:attr="src=@{/images/minus.png},alt=@{minus},title=@{minus}"
+                         width="50" height="50" alt="">
+                </button>
+            </form>
+        </td>
+    </tr>
     </tbody>
 </table>
 
 <div class="pagination" th:if="${totalPages > 1}">
     <ul>
         <li th:each="i : ${#numbers.sequence(1, totalPages)}">
-            <a th:href="@{/api/v1/products/{productType}(productType=${productType}, page=${i}, size=${size})}" th:text="${i}">Page</a>
+            <a th:href="@{/api/v1/cart(page=${i}, size=${size})}" th:text="${i}">Page</a>
         </li>
     </ul>
 </div>

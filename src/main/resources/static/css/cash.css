@@ -1,0 +1,27 @@
+#header-text {
+    top: 30%;
+    left:30.5%;
+
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+
+#cash-input {
+    width: 550px;
+    height: 36px;
+    left: 31.5%;
+    top: 50%;
+}
+
+#submit-button {
+    width: 300px;
+    height: 90px;
+    left: 39.5%;
+    top: 63%;
+
+    border-width: 0;
+    color: #0064FF;
+    text-decoration: underline;
+}

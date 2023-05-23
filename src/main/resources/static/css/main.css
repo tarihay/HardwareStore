@@ -59,32 +59,6 @@ nav{
     border-radius: 15px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    height: 36px;
-
-    position: absolute;
-
-    background: #CFCDC4;
-    border-radius: 20px;
-    border-width: 0;
-
-    font-family: 'Raleway';
-    text-align: center;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 38px;
-    color: rgba(0, 0, 0, 0.44);
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
 
 .form-group {
     display: flex;
@@ -214,4 +188,26 @@ nav{
 
 .text-danger {
     color:red;
+}
+
+.th-text-pink {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 70px;
+    text-align: center;
+
+    color: #E222BC;
+}
+
+.th-text-blue {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 70px;
+    text-align: center;
+
+    color: #0064FF;
 }

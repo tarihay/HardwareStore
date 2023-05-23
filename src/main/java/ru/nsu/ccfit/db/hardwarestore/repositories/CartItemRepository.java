@@ -8,10 +8,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartEntity;
-import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductTypeEntity;
-
+import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartItemEntity;
 
 @Repository
-public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
-    Page<ProductEntity> findAllByProductType(ProductTypeEntity productType, Pageable pageable);
+public interface CartItemRepository extends JpaRepository<CartItemEntity, Long> {
+    @Query(value = "SELECT ci FROM CartItemEntity ci WHERE ci.cart.id = :cartId")
+    Page<CartItemEntity> findByCartId(@Param("cartId") Long cartId, Pageable pageable);
 }

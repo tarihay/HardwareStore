@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Pan-Propal</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cash.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
@@ -15,7 +16,7 @@
             <img src="../static/images/logo.png" th:attr="src=@{/images/logo.png},alt=@{pan-logo},title=@{pan-logo}" width="390" height="100" alt="">
         </a>
 
-        <a class="basket" th:href="@{/api/v1/basket}">
+        <a class="basket" th:href="@{/api/v1/cart}">
             <img src="../static/images/basket.png" th:attr="src=@{/images/basket.png},alt=@{basket},title=@{basket}" width="70" height="70" alt="">
         </a>
 
@@ -24,5 +25,22 @@
         </a>
     </nav>
 </header>
+
+<h5 class="h-text" id="header-text">Напиши сколько денег хочешь:</h5>
+
+<div>
+    <form th:action="@{/api/v1/cash/top-up}" method="post">
+        <input
+                type="number"
+                name="amount"
+                class="form-group"
+                id="cash-input"
+                placeholder="type your amount"
+                min="1" required
+        >
+        <button type="submit" class="a-button" id="submit-button">Пополнить</button>
+    </form>
+</div>
+
 </body>
 </html>
