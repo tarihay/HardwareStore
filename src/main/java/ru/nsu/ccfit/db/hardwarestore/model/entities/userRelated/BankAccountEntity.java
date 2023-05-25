@@ -2,13 +2,16 @@ package ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated.PaymentDetailsEntity;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Bank_Account")
 public class BankAccountEntity {
@@ -20,8 +23,7 @@ public class BankAccountEntity {
     @Column(name = "money_amount")
     private BigDecimal moneyAmount;
 
-    @OneToOne
-    @JoinColumn(name = "owner", referencedColumnName = "id")
+    @OneToOne(mappedBy = "bankAccount")
     private UserEntity owner;
 
     @OneToMany(mappedBy = "from")
@@ -29,5 +31,17 @@ public class BankAccountEntity {
 
     @OneToMany(mappedBy = "to")
     private Set<PaymentDetailsEntity> paymentDetailsTo = new HashSet<>();
+
+    public void addToTotalPrice(BigDecimal price) {
+        moneyAmount = moneyAmount.add(price);
+    }
+
+    public void decreaseTotalPrice(BigDecimal price) {
+        if (moneyAmount.compareTo(price) < 0) {
+            moneyAmount = BigDecimal.ZERO;
+        } else {
+            moneyAmount = moneyAmount.subtract(price);
+        }
+    }
 
 }

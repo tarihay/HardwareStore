@@ -2,16 +2,17 @@ package ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated.OrderItemsEntity;
-import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartEntity;
+import lombok.Getter;
+import lombok.Setter;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated.OrderItemEntity;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartItemEntity;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Product")
 @EqualsAndHashCode(exclude = "carts")
@@ -24,27 +25,27 @@ public class ProductEntity {
     @Column
     private String name;
 
-    @Column
+    @Column(unique = true)
     private String serialNumber;
 
     @Column
     private String manufacturer;
 
-    @Column
+    @Column()
     private Long price;
 
     @Column
     private Long amount;
 
     @ManyToOne
-    @JoinColumn(name = "product-type", referencedColumnName = "name")
+    @JoinColumn(name = "product_type", referencedColumnName = "name")
     private ProductTypeEntity productType;
 
     @OneToMany(mappedBy = "product")
     private Set<ProductValueEntity> productValues = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
-    private Set<OrderItemsEntity> orderItems = new HashSet<>();
+    private Set<OrderItemEntity> orderItems = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
     @JsonIgnore

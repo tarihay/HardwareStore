@@ -31,38 +31,69 @@
 
 <table class="products">
     <thead>
-        <tr>
-            <th class="th-text-pink" scope="col">ID</th>
-            <th class="th-text-pink" scope="col">Название</th>
-            <th class="th-text-pink" scope="col">Сер. Номер</th>
-            <th class="th-text-pink" scope="col">Проивзодитель</th>
-            <th class="th-text-pink" scope="col">Цена</th>
-            <th class="th-text-pink" scope="col">Добавить</th>
-        </tr>
+    <tr>
+        <th>
+            <a  class="th-text-white" th:href="@{/api/v1/products/{productType}(productType=${productType},page=${currentPage},size=${pageSize},sortField='id',sortDir=${sortField=='id' && sortDir=='asc' ? 'desc' : 'asc'})}">
+                ID
+                <span th:if="${sortField=='id' && sortDir=='desc'}">▲</span>
+                <span th:if="${sortField=='id' && sortDir=='asc'}">▼</span>
+            </a>
+        </th>
+        <th>
+            <a  class="th-text-white" th:href="@{/api/v1/products/{productType}(productType=${productType},page=${currentPage},size=${pageSize},sortField='name',sortDir=${sortField=='name' && sortDir=='asc' ? 'desc' : 'asc'})}">
+                Название
+                <span th:if="${sortField=='name' && sortDir=='desc'}">▲</span>
+                <span th:if="${sortField=='name' && sortDir=='asc'}">▼</span>
+            </a>
+        </th>
+        <th>
+            <a  class="th-text-white" th:href="@{/api/v1/products/{productType}(productType=${productType},page=${currentPage},size=${pageSize},sortField='serialNumber',sortDir=${sortField=='serialNumber' && sortDir=='asc' ? 'desc' : 'asc'})}">
+                Сер. Номер
+                <span th:if="${sortField=='serialNumber' && sortDir=='desc'}">▲</span>
+                <span th:if="${sortField=='serialNumber' && sortDir=='asc'}">▼</span>
+            </a>
+        </th>
+        <th>
+            <a  class="th-text-white" th:href="@{/api/v1/products/{productType}(productType=${productType},page=${currentPage},size=${pageSize},sortField='manufacturer',sortDir=${sortField=='manufacturer' && sortDir=='asc' ? 'desc' : 'asc'})}">
+                Производитель
+                <span th:if="${sortField=='manufacturer' && sortDir=='desc'}">▲</span>
+                <span th:if="${sortField=='manufacturer' && sortDir=='asc'}">▼</span>
+            </a>
+        </th>
+        <th>
+            <a  class="th-text-white" th:href="@{/api/v1/products/{productType}(productType=${productType},page=${currentPage},size=${pageSize},sortField='price',sortDir=${sortField=='price' && sortDir=='asc' ? 'desc' : 'asc'})}">
+                Цена
+                <span th:if="${sortField=='price' && sortDir=='desc'}">▲</span>
+                <span th:if="${sortField=='price' && sortDir=='asc'}">▼</span>
+            </a>
+        </th>
+        <th class="th-text-white" scope="col">Добавить</th>
+    </tr>
     </thead>
     <tbody>
-        <tr th:each="product : ${products}">
-            <td class="th-text-blue" th:text="${product.id}"></td>
-            <td class="th-text-blue" th:text="${product.name}"></td>
-            <td class="th-text-blue" th:text="${product.serialNumber}"></td>
-            <td class="th-text-blue" th:text="${product.manufacturer}"></td>
-            <td class="th-text-blue" th:text="${product.price}"></td>
-            <td>
-                <form th:action="@{/api/v1/products/add-to-cart/{id}(id=${product.id})}" method="post">
-                    <button class="add-to-cart-button" type="submit">
-                        <img src="../static/images/plus.png" th:attr="src=@{/images/plus.png},alt=@{plus},title=@{plus}"
-                             width="50" height="50" alt="">
-                    </button>
-                </form>
-            </td>
-        </tr>
+    <tr th:each="product : ${products}">
+        <td class="th-text-pink" th:text="${product.id}"></td>
+        <td class="th-text-pink" th:text="${product.name}"></td>
+        <td class="th-text-pink" th:text="${product.serialNumber}"></td>
+        <td class="th-text-pink" th:text="${product.manufacturer}"></td>
+        <td class="th-text-pink" th:text="${product.price}"></td>
+        <td>
+            <form th:action="@{/api/v1/products/add-to-cart/{id}(id=${product.id})}" method="post">
+                <button class="add-to-cart-button" type="submit">
+                    <img src="../static/images/plus.png" th:attr="src=@{/images/plus.png},alt=@{plus},title=@{plus}"
+                         width="50" height="50" alt="">
+                </button>
+            </form>
+        </td>
+    </tr>
     </tbody>
 </table>
 
 <div class="pagination" th:if="${totalPages > 1}">
     <ul>
         <li th:each="i : ${#numbers.sequence(1, totalPages)}">
-            <a th:href="@{/api/v1/products/{productType}(productType=${productType}, page=${i}, size=${size})}" th:text="${i}">Page</a>
+            <a th:href="@{/api/v1/products/{productType}(productType=${productType}, page=${i}, size=${size})}"
+               th:text="${i}">Page</a>
         </li>
     </ul>
 </div>

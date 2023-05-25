@@ -3,9 +3,12 @@ package ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Cart_Product")
 @EqualsAndHashCode(exclude = "cartItems")
@@ -15,11 +18,11 @@ public class CartItemEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cart-id", referencedColumnName = "id")
+    @JoinColumn(name = "cart_id", referencedColumnName = "id")
     private CartEntity cart;
 
     @ManyToOne
-    @JoinColumn(name = "product-id", referencedColumnName = "id")
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private ProductEntity product;
 
     public CartItemEntity(CartEntity cart, ProductEntity product) {

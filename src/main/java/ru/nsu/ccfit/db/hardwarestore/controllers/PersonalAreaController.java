@@ -53,7 +53,7 @@ public class PersonalAreaController {
         UserEntity user = userService.getUserByUsername(userDTO.getUsername());
 
         UserEntity existingUserEmail = userService.getUserByEmail(userDTO.getEmail());
-        if (!Objects.equals(user.getEmail(), existingUserEmail.getEmail())) {
+        if (existingUserEmail != null && !Objects.equals(user.getEmail(), existingUserEmail.getEmail())) {
             if(!existingUserEmail.getEmail().isEmpty() && !existingUserEmail.getEmail().isEmpty()) {
                 result.rejectValue("email", "Этот email уже используется");
                 return "redirect:/api/v1/personal-area/edit?fail";
@@ -79,7 +79,13 @@ public class PersonalAreaController {
             user.setPassword(userDTO.getPassword());
         }
 
-        userService.updateUser(user);
+        String saveResult = userService.updateUser(user);
+        if (Objects.equals(saveResult, "email-error")) {
+            result.rejectValue("email", "Этот email уже используется");
+            return "redirect:/api/v1/personal-area/edit?fail";
+        }
+
+
         return "redirect:/api/v1/personal-area";
     }
 

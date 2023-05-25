@@ -2,9 +2,12 @@ package ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.BankAccountEntity;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Payment_Details")
 public class PaymentDetailsEntity {
@@ -14,18 +17,18 @@ public class PaymentDetailsEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "acc-from", referencedColumnName = "id")
+    @JoinColumn(name = "acc_from", referencedColumnName = "id")
     private BankAccountEntity from;
 
     @ManyToOne
-    @JoinColumn(name = "acc-to", referencedColumnName = "id")
+    @JoinColumn(name = "acc_to", referencedColumnName = "id")
     private BankAccountEntity to;
 
     @OneToOne(mappedBy = "paymentDetails")
     private OrderDetailsEntity orderDetails;
 
     @ManyToOne
-    @JoinColumn(name = "payment-status", referencedColumnName = "name")
+    @JoinColumn(name = "payment_status", referencedColumnName = "name")
     private PaymentStatusEntity paymentStatus;
 
 }

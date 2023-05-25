@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Pan-Propal</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/orders.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
@@ -24,5 +25,42 @@
         </a>
     </nav>
 </header>
+
+<table class="orders">
+    <thead>
+    <tr>
+        <th class="th-text-white" scope="col">ID</th>
+        <th class="th-text-white" scope="col">Сумма</th>
+        <th class="th-text-white" scope="col">Дата создания</th>
+        <th class="th-text-white" scope="col">Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td>
+            <a class="th-text-pink" th:href="@{/api/v1/orders/{id}(id=${order.id})}" th:text="${order.id}"></a>
+        </td>
+        <td class="th-text-pink" th:text="${order.total}"></td>
+        <td class="th-text-pink" th:text="${order.createdAt}"></td>
+        <td th:switch="${order.paymentDetails.paymentStatus.name}">
+            <p th:case="'NEW'" class="status-new" th:text="${order.paymentDetails.paymentStatus.name}"></p>
+            <p th:case="'ACCEPTED'" class="status-success" th:text="${order.paymentDetails.paymentStatus.name}"></p>
+            <p th:case="'REJECTED'" class="status-rejected" th:text="${order.paymentDetails.paymentStatus.name}"></p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+    <ul>
+        <li th:each="i : ${#numbers.sequence(1, totalPages)}">
+            <a id="back-button" th:href="@{/api/v1/personal-area}">
+                <h5>Назад</h5>
+            </a>
+            <a th:href="@{/api/v1/orders(page=${i}, size=${size})}" th:text="${i}">Page</a>
+        </li>
+    </ul>
+</div>
+
 </body>
 </html>
