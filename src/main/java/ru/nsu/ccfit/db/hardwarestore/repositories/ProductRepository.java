@@ -14,4 +14,5 @@ import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductTypeEn
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     Page<ProductEntity> findAllByProductType(ProductTypeEntity productType, Pageable pageable);
+
 }

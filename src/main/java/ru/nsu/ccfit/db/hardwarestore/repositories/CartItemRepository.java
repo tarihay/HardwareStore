@@ -10,8 +10,12 @@ import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartEntity;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated.CartItemEntity;
 
+import java.util.List;
+
 @Repository
 public interface CartItemRepository extends JpaRepository<CartItemEntity, Long> {
     @Query(value = "SELECT ci FROM CartItemEntity ci WHERE ci.cart.id = :cartId")
     Page<CartItemEntity> findByCartId(@Param("cartId") Long cartId, Pageable pageable);
+
+    List<CartItemEntity> findByCart(CartEntity cart);
 }

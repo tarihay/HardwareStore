@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,14 +49,22 @@ public class ProductsController {
             @PathVariable String productType,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "7") int size,
+            @RequestParam(defaultValue = "id") String sortField,
+            @RequestParam(defaultValue = "decs") String sortDir,
             Model model
     ) {
-        Pageable pageable = PageRequest.of(page - 1, size);
-        Page<ProductDTO> products = productService.getProductsByType(productType, pageable);
+
+        Sort.Direction direction = sortDir.equalsIgnoreCase("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort.Order order = new Sort.Order(direction, sortField);
+
+        Pageable pageable = PageRequest.of(page - 1, size, Sort.by(order));
+        Page<ProductEntity> products = productService.getProductsByType(productType, pageable);
         model.addAttribute("products", products.getContent());
         model.addAttribute("totalPages", products.getTotalPages());
         model.addAttribute("currentPage", page);
         model.addAttribute("size", size);
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
         return "products";
     }
 

@@ -2,8 +2,11 @@ package ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Product_Values")
 public class ProductValueEntity {

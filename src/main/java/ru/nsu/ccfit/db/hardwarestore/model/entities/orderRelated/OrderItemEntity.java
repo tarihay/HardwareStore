@@ -1,17 +1,15 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated;
 
-import jakarta.annotation.sql.DataSourceDefinitions;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Order_Items")
-public class OrderItemsEntity {
+public class OrderItemEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -21,7 +19,6 @@ public class OrderItemsEntity {
     private ProductEntity product;
 
     @ManyToOne
-    @JoinColumn(name = "order-details", referencedColumnName = "id")
+    @JoinColumn(name = "order_details", referencedColumnName = "id")
     private OrderDetailsEntity orderDetails;
-
 }

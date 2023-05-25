@@ -2,6 +2,8 @@ package ru.nsu.ccfit.db.hardwarestore.services;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import ru.nsu.ccfit.db.hardwarestore.exceptions.NoSuchUserFoundException;
 import ru.nsu.ccfit.db.hardwarestore.mappers.userRelated.UserMapper;
@@ -14,6 +16,7 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Set;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class UserService {
@@ -49,11 +52,18 @@ public class UserService {
         return dto;
     }
 
-    public void saveUser(UserDTO userDTO) {
+    public String saveUser(UserDTO userDTO) {
         UserEntity user = userMapper.mapToEntity(userDTO);
         RoleEntity userRole = roleRepository.findByName("USER").orElse(null);
         user.setRoles(Collections.singleton(userRole));
-        user = userRepository.save(user);
+
+        try {
+            user = userRepository.save(user);
+        } catch (DataIntegrityViolationException e) {
+            log.error("Неверный формат email");
+            return "email-error";
+        }
+
 
         CartEntity cart = new CartEntity();
         cart.setOwner(user);
@@ -63,12 +73,22 @@ public class UserService {
         BankAccountEntity bankAccount = new BankAccountEntity();
         bankAccount.setOwner(user);
         bankAccount.setMoneyAmount(BigDecimal.ZERO);
-        user.setBankAccount(bankAccount);
         bankAccountRepository.save(bankAccount);
+
+        user.setBankAccount(bankAccount);
+
+        return "good";
     }
 
-    public void updateUser(UserEntity user) {
-        userRepository.save(user);
+    public String updateUser(UserEntity user) {
+        try {
+            userRepository.save(user);
+        } catch (DataIntegrityViolationException e) {
+            log.error("Неверный формат email");
+            return "email-error";
+        }
+
+        return "good";
     }
 
     @Transactional

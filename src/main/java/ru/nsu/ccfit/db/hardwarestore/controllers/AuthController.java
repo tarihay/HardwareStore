@@ -65,7 +65,11 @@ public class AuthController {
             model.addAttribute("user", userDTO);
             return "register";
         }
-        userService.saveUser(userDTO);
+        String saveResult = userService.saveUser(userDTO);
+        if (Objects.equals(saveResult, "email-error")) {
+            result.rejectValue("email", "Ошибка в написании email");
+            return "redirect:/api/v1/register?fail";
+        }
         return "redirect:/api/v1/login";
     }
 }

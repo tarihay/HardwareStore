@@ -1,9 +1,18 @@
 package ru.nsu.ccfit.db.hardwarestore.model.entities.userRelated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.orderRelated.OrderDetailsEntity;
+import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity;
+
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "Users")
 public class UserEntity {
@@ -35,82 +44,15 @@ public class UserEntity {
     )
     private Set<RoleEntity> roles = new HashSet<>();
 
-    @OneToOne(mappedBy = "owner")
+    @OneToOne
+    @JoinColumn(name = "bank_account_id", referencedColumnName = "id")
     private BankAccountEntity bankAccount;
 
     @OneToOne
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     private CartEntity cart;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Set<RoleEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<RoleEntity> roles) {
-        this.roles = roles;
-    }
-
-    public BankAccountEntity getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(BankAccountEntity bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
-    public CartEntity getCart() {
-        return cart;
-    }
-
-    public void setCart(CartEntity cart) {
-        this.cart = cart;
-    }
+    @OneToMany(mappedBy = "owner")
+    @JsonIgnore
+    private Set<OrderDetailsEntity> orders = new HashSet<>();
 }

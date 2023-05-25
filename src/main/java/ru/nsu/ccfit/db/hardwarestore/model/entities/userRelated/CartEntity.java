@@ -5,12 +5,17 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Check;
 import ru.nsu.ccfit.db.hardwarestore.model.entities.productRelated.ProductEntity;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Cart")
 @EqualsAndHashCode(exclude = "carts")
@@ -18,6 +23,9 @@ public class CartEntity {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(columnDefinition = "int default 0")
+    private BigDecimal totalPrice = BigDecimal.ZERO;
 
     @OneToOne(mappedBy = "cart")
     private UserEntity owner;
@@ -54,5 +62,17 @@ public class CartEntity {
         if (!id.equals(other.id))
             return false;
         return true;
+    }
+
+    public void addToTotalPrice(double price) {
+        totalPrice = totalPrice.add(BigDecimal.valueOf(price));
+    }
+
+    public void decreaseTotalPrice(double price) {
+        if (totalPrice.compareTo(BigDecimal.valueOf(price)) < 0) {
+            totalPrice = BigDecimal.ZERO;
+        } else {
+            totalPrice = totalPrice.subtract(BigDecimal.valueOf(price));
+        }
     }
 }

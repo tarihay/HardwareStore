@@ -5,6 +5,7 @@
     <title>Pan-Propal</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/products.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cart.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;900&display=swap" rel="stylesheet">
@@ -32,23 +33,23 @@
 <table class="products">
     <thead>
     <tr>
-        <th class="th-text-pink" scope="col">ID</th>
-        <th class="th-text-pink" scope="col">Название</th>
-        <th class="th-text-pink" scope="col">Сер. Номер</th>
-        <th class="th-text-pink" scope="col">Проивзодитель</th>
-        <th class="th-text-pink" scope="col">Цена</th>
-        <th class="th-text-pink" scope="col">Тип товара</th>
-        <th class="th-text-pink" scope="col">Убрать</th>
+        <th class="th-text-white" scope="col">ID</th>
+        <th class="th-text-white" scope="col">Название</th>
+        <th class="th-text-white" scope="col">Сер. Номер</th>
+        <th class="th-text-white" scope="col">Проивзодитель</th>
+        <th class="th-text-white" scope="col">Цена</th>
+        <th class="th-text-white" scope="col">Тип товара</th>
+        <th class="th-text-white" scope="col">Убрать</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="product : ${products}">
-        <td class="th-text-blue" th:text="${product.id}"></td>
-        <td class="th-text-blue" th:text="${product.name}"></td>
-        <td class="th-text-blue" th:text="${product.serialNumber}"></td>
-        <td class="th-text-blue" th:text="${product.manufacturer}"></td>
-        <td class="th-text-blue" th:text="${product.price}"></td>
-        <td class="th-text-blue" th:text="${product.productType}"></td>
+        <td class="th-text-pink" th:text="${product.id}"></td>
+        <td class="th-text-pink" th:text="${product.name}"></td>
+        <td class="th-text-pink" th:text="${product.serialNumber}"></td>
+        <td class="th-text-pink" th:text="${product.manufacturer}"></td>
+        <td class="th-text-pink" th:text="${product.price}"></td>
+        <td class="th-text-pink" th:text="${product.productType}"></td>
         <td>
             <form th:action="@{/api/v1/cart/remove/{id}(id=${product.id})}" method="post">
                 <button class="add-to-cart-button" type="submit">
@@ -61,13 +62,35 @@
     </tbody>
 </table>
 
-<div class="pagination" th:if="${totalPages > 1}">
-    <ul>
-        <li th:each="i : ${#numbers.sequence(1, totalPages)}">
-            <a th:href="@{/api/v1/cart(page=${i}, size=${size})}" th:text="${i}">Page</a>
-        </li>
-    </ul>
+<div>
+    <div class="pagination" th:if="${totalPages > 1}">
+        <ul>
+            <li th:each="i : ${#numbers.sequence(1, totalPages)}">
+                <a th:href="@{/api/v1/cart(page=${i}, size=${size})}" th:text="${i}">Page</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="moneyAmount">
+        <div th:if="${param.fail}" class="h-text" id="make-order-error" th:text="${errorText}">
+        </div>
+
+        <h5 class="moneyAmount-text">Total:</h5>
+        <div class="moneyAmount-value">
+            <h5 th:text="${totalPrice}"></h5>
+        </div>
+        <div>
+            <form th:action="@{/api/v1/cart/make-order}"  method="get">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button class="a-button" id="order-button" type="submit">
+                    <h5>Заказать</h5>
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
+
+
 
 </body>
 </html>

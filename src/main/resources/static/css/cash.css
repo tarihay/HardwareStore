@@ -25,3 +25,11 @@
     color: #0064FF;
     text-decoration: underline;
 }
+
+#cash-back {
+    left:1%;
+    top: 88%;
+
+    width: 180px;
+    height: 40px;
+}

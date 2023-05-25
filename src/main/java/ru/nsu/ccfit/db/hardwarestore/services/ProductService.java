@@ -1,9 +1,11 @@
 package ru.nsu.ccfit.db.hardwarestore.services;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.nsu.ccfit.db.hardwarestore.mappers.productRelated.ProductMapper;
 import ru.nsu.ccfit.db.hardwarestore.model.dtos.productRelated.ProductDTO;
 import ru.nsu.ccfit.db.hardwarestore.model.dtos.productRelated.ProductFieldsDTO;
@@ -23,6 +25,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class ProductService {
@@ -32,7 +35,7 @@ public class ProductService {
     private ProductFieldsRepository productFieldsRepository;
     private ProductValueRepository productValueRepository;
 
-    public Page<ProductDTO> getProductsByType(String productTypeName, Pageable pageable) {
+    public Page<ProductEntity> getProductsByType(String productTypeName, Pageable pageable) {
         Optional<ProductTypeEntity> productTypeOptional = productTypeRepository.findByName(productTypeName);
         ProductTypeEntity productTypeEntity = null;
         if (productTypeOptional.isPresent()) {
@@ -42,8 +45,7 @@ public class ProductService {
             return null;
         }
 
-        return productRepository.findAllByProductType(productTypeEntity, pageable)
-                .map((product) -> productMapper.mapToDTO(product));
+        return productRepository.findAllByProductType(productTypeEntity, pageable);
     }
 
     public ProductDTO getProductById(Long id) {
@@ -80,9 +82,6 @@ public class ProductService {
                 }
             }
         }
-
-        //TODO проверить кастомные поля в продукте
-
         return savedProduct.getId();
     }
 
@@ -95,5 +94,17 @@ public class ProductService {
         ProductTypeEntity type = new ProductTypeEntity();
         type.setName(typeDTO.getName());
         productTypeRepository.save(type);
+    }
+
+    @Transactional
+    public void decreaseProductAmount(ProductEntity product, int amount) {
+        long currentAmount = product.getAmount();
+
+        if (currentAmount < amount) {
+            log.error("Money error");
+            return;
+        }
+
+        product.setAmount(currentAmount - amount);
     }
 }
