@@ -52,6 +52,7 @@ public class UserService {
         return dto;
     }
 
+    @Transactional
     public String saveUser(UserDTO userDTO) {
         UserEntity user = userMapper.mapToEntity(userDTO);
         RoleEntity userRole = roleRepository.findByName("USER").orElse(null);

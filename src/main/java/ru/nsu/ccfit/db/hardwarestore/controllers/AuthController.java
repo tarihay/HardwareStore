@@ -44,6 +44,7 @@ public class AuthController {
                 || userDTO.getPassword().isEmpty()
                 || userDTO.getPasswordCheck().isEmpty()
         ) {
+            model.addAttribute("user", userDTO);
             return "redirect:/api/v1/register?fail";
         }
 

@@ -44,8 +44,7 @@ public class UserEntity {
     )
     private Set<RoleEntity> roles = new HashSet<>();
 
-    @OneToOne
-    @JoinColumn(name = "bank_account_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "owner")
     private BankAccountEntity bankAccount;
 
     @OneToOne
